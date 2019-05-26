@@ -1,0 +1,13 @@
+<h1>LOGIN</h1>
+
+<% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
+  <!-- ユーザーがログインしていた時の処理 -->
+  <h4> mail： <%= current_user.email %> </h4>
+  <%= link_to "Add Inquiry", new_inquiry_path, class: 'get' %> <!-- 問合せ画面に遷移する -->
+  <%= link_to "Logout", destroy_user_session_path, method: :delete %> <!-- ログアウトする -->
+<% else %>
+  <!-- ユーザーがログインしていなかった時の処理 -->
+  <h2> Not logged in </h2>
+  <%= link_to "Login", new_user_session_path, class: 'post' %> <!-- ログイン画面に遷移する -->
+  <%= link_to "Sign up", new_user_registration_path, class: 'post' %> <!-- 新規登録画面に遷移する -->
+<% end %>
