@@ -1,4 +1,32 @@
-<h1>Inquiries#new</h1>
-<p>Find me in app/views/inquiries/new.html.erb</p>
-<%= radio_button 'page', 'category', 'ruby_base', {} %>
-<%= check_box 'page', 'freezeflag', {:checked => true}, true, false %>
+<%= form_with model: @inquiries, url: '/inquiry', local: true do |form| %>
+  <div class="field">
+    <%= form.label :'問合せ内容' %>
+    <%= form.text_field :subject, id: :subject %>
+  </div>
+
+  <div class="field">
+    <%= form.text_area :comtent, style: 'width: 360px' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :'チェック１' %>
+    <%= form.check_box :checkbox_01, id: :checkbox_01 %>
+    <%= form.label :'チェック２' %>
+    <%= form.check_box :checkbox_02, id: :checkbox_02 %>
+    <%= form.label :'チェック３' %>
+    <%= form.check_box :checkbox_03, id: :checkbox_03 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :'ラジオ１' %>
+    <%= form.radio_button :radio_button, id: :radio_button_01 %>
+    <%= form.label :'ラジオ２' %>
+    <%= form.radio_button :radio_button, id: :radio_button_02 %>
+    <%= form.label :'ラジオ３' %>
+    <%= form.radio_button :radio_button, id: :radio_button_03 %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag "Save", id: 'submit' %>
+  </div>
+<% end %>
